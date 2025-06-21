@@ -281,7 +281,7 @@ const soruBankasi = [
   { "harf_sayisi": 10, "soru": "Bir İstanbul takımı", "cevap": "FENERBAHÇE" },
   { "harf_sayisi": 10, "soru": "Bitkilerin güneş enerjisiyle besin üretmesi", "cevap": "FOTOSENTEZ" },
   { "harf_sayisi": 10, "soru": "Dans adımlarını tasarlayan sanat", "cevap": "KOREOGRAFİ" },
-  { "harf_sayisi": 10, "soru": "Deney yapılan yer", "cevap": "LABORATUAR" }
+  { "harf_sayisi": 10, "soru": "Deney yapılan yer", "cevap": "LABORATUAR" },
   { "harf_sayisi": 10, "soru": "Görüntü ve ses yayını yapan kutu", "cevap": "TELEVİZYON" },
   { "harf_sayisi": 10, "soru": "Halkın kendi kendini yönetmesi", "cevap": "CUMHURİYET" }, 
   { "harf_sayisi": 10, "soru": "Hatay'ın bir ilçesi", "cevap": "İSKENDERUN" },
