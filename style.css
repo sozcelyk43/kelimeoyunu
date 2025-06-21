@@ -73,12 +73,15 @@ header h1 {
 
 .letter-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Kutucuklar az ise ortalar */
     align-items: center;
-    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 30px;
     min-height: 80px;
+    flex-wrap: nowrap; /* Asla alt satıra kaydırma, tek satırda kalmaya zorla */
+    overflow-x: auto;  /* Ekrana sığmazsa yatay kaydırma çubuğu çıkar */
+    padding-bottom: 15px; /* Kaydırma çubuğu için altta boşluk bırak */
+    justify-content: flex-start; /* Sığmayınca soldan başla (kaydırma için önemli) */
 }
 
 .hexagon {
@@ -274,46 +277,62 @@ button:disabled {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+footer {    position: fixed;    bottom: 0;    left: 0;    width: 100%;    padding: 15px 0;    text-align: center;    color: rgba(255, 255, 255, 0.5);    font-size: 0.9rem;
     z-index: 5;
 }
+/* --- MOBİL UYUMLULUK AYARLARI --- */
 
-
+/* Ekran genişliği 480px veya daha az olduğunda bu kurallar geçerli olur */
 @media (max-width: 480px) {
+
+    /* Harf kutucukları arasındaki boşluğu ve alttaki boşluğu azalt */
+    .letter-container {
+        gap: 5px;
+        padding-bottom: 10px;
+    }
+
+    /* Harf kutucuklarının boyutunu ve içindeki yazıyı küçült */
+    .hexagon {
+        width: 45px;
+        height: 52px;
+        flex-shrink: 0; /* Küçülmeye zorlanmasını engelle, boyutunu koru */
+    }
+    .hexagon .letter {
+        font-size: 1.5rem;
+    }
+
 
     /* Butonlar arasındaki boşluğu azalt */
     .controls {
         gap: 10px; 
     }
 
+    /* Üç yuvarlak butonun boyutunu ve yazı tipini küçült */
     #show-question-btn, #start-answer-btn, #get-letter-btn {
         width: 75px;
         height: 75px;
-        font-size: 0.8rem; /* Yazı tipini küçült */
+        font-size: 0.8rem;
         line-height: 1.1;
+        flex-shrink: 0; /* Butonların da küçülmesini engelle */
     }
 
+    /* Kırmızı "Durdur" butonunun özel kapsayıcısının boyutunu da küçült */
     #special-button-container {
         width: 75px;
         height: 75px;
     }
     
+    /* Kırmızı buton üzerindeki sayacın yazı tipini küçült */
     #answer-timer-display {
         font-size: 2rem;
     }
 
+    /* Oyunun ana başlığını biraz küçült */
     header h1 {
         font-size: 2rem;
     }
 
+    /* Puan ve süre kutucuklarındaki değerleri küçült */
     .stat-box .value {
         font-size: 1.5rem;
     }
