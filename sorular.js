@@ -27,9 +27,7 @@ const soruBankasi = [
   { "harf_sayisi": 3, "soru": "Çeşit, cins", "cevap": "TÜR" },
   { "harf_sayisi": 3, "soru": "Kuvvet, takat", "cevap": "GÜÇ" },
   { "harf_sayisi": 3, "soru": "Allah'a hizmet eden", "cevap": "KUL" },
-
-
-  { "harf_sayisi: 4, "soru": "Eğitim görülen yer", "cevap": "OKUL" },
+  { "harf_sayisi": 4, "soru": "Eğitim görülen yer", "cevap": "OKUL" },
   { "harf_sayisi": 4, "soru": "Satrançtaki bir taş", "cevap": "KALE" },
   { "harf_sayisi": 4, "soru": "Üzerinde yemek yenilen mobilya", "cevap": "MASA" },
   { "harf_sayisi": 4, "soru": "Bir odaya giriş yeri", "cevap": "KAPI" },
@@ -50,10 +48,9 @@ const soruBankasi = [
   { "harf_sayisi": 4, "soru": "Müzik yazısı", "cevap": "NOTA" },
   { "harf_sayisi": 4, "soru": "Bir tahıl", "cevap": "ARPA" },
   { "harf_sayisi": 4, "soru": "Bir iskambil kartı", "cevap": "VALE" },
-  { "harf_sayisi": 4, "soru": "Bir avcı kuşu", "cevap": "ŞAHİN" },
   { "harf_sayisi": 4, "soru": "İzin, müsaade", "cevap": "ONAY" },
   { "harf_sayisi": 4, "soru": "Bir içecek", "cevap": "KOLA" },
-
+  { "harf_sayisi": 5, "soru": "Bir avcı kuşu", "cevap": "ŞAHİN" },
   { "harf_sayisi": 5, "soru": "Ses yayını yapan cihaz", "cevap": "RADYO" },
   { "harf_sayisi": 5, "soru": "Okunan, yazılı eser", "cevap": "KİTAP" },
   { "harf_sayisi": 5, "soru": "Sadık ev hayvanı", "cevap": "KÖPEK" },
@@ -83,9 +80,6 @@ const soruBankasi = [
   { "harf_sayisi": 5, "soru": "Bir müzik aleti", "cevap": "GİTAR" },
   { "harf_sayisi": 5, "soru": "Yarışmacı, hasım", "cevap": "RAKİP" },
   { "harf_sayisi": 6, "soru": "Vücut yapısı", "cevap": "BÜNYE" },
-
-
-
   { "harf_sayisi": 6, "soru": "Oturmaya yarayan mobilya", "cevap": "KANEPE" },
   { "harf_sayisi": 6, "soru": "Yön bulmaya yarayan alet", "cevap": "PUSULA" },
   { "harf_sayisi": 6, "soru": "Güzel koku", "cevap": "PARFÜM" },
@@ -117,7 +111,11 @@ const soruBankasi = [
   { "harf_sayisi": 6, "soru": "Bir görevden kendi isteğiyle ayrılma", "cevap": "İSTİFA" },
   { "harf_sayisi": 6, "soru": "Yumuşak, parlak bir kumaş türü", "cevap": "KADİFE" },
   { "harf_sayisi": 6, "soru": "Yanardağ", "cevap": "VOLKAN" },
-
+  { "harf_sayisi": 6, "soru": "Yüksek bir yerden hızla düşen su kütlesi", "cevap": "ŞELALE" }, 
+  { "harf_sayisi": 6, "soru": "Trafik işareti levhası", "cevap": "TABELA" },
+  { "harf_sayisi": 6, "soru": "Bir işin yapılması için gereken süre", "cevap": "MÜDDET" },
+  { "harf_sayisi": 6, "soru": "Oturmak için kullanılan, genellikle tek kişilik mobilya", "cevap": "KOLTUK" },
+  { "harf_sayisi": 6, "soru": "Birine verilen armağan", "cevap": "HEDİYE" },
   { "harf_sayisi": 7, "soru": "Uzak mesafe iletişim aracı", "cevap": "TELEFON" },
   { "harf_sayisi": 7, "soru": "Yağmurdan koruyan alet", "cevap": "ŞEMSİYE" },
   { "harf_sayisi": 7, "soru": "Kapı ve kilitleri açan alet", "cevap": "ANAHTAR" },
@@ -129,116 +127,100 @@ const soruBankasi = [
   { "harf_sayisi": 7, "soru": "Binanın dışarıya bakan, camlı bölümü", "cevap": "PENCERE" },
   { "harf_sayisi": 7, "soru": "Bir şeyi güvence altına alma", "cevap": "SİGORTA" },
   { "harf_sayisi": 7, "soru": "Sahne oyunu", "cevap": "TİYATRO" },
-  
   { "harf_sayisi": 7, "soru": "Vücudumuz için gerekli organik bileşik", "cevap": "VİTAMİN" },
   { "harf_sayisi": 7, "soru": "Bir şeyin nasıl yapılacağını gösteren kurallar bütünü", "cevap": "YÖNERGE" },
-  { "harf_sayisi": 7, "soru": "Yüksek bir yerden hızla düşen su kütlesi", "cevap": "ŞELALE" },
-  { "harf_sayisi": 7, "soru": "Trafik işareti levhası", "cevap": "TABELA" },
   { "harf_sayisi": 7, "soru": "Bir sıvının içinde katı bir maddenin çözünmesiyle oluşan karışım", "cevap": "ÇÖZELTİ" },
-  { "harf_sayisi": 7, "soru": "Bir işin yapılması için gereken süre", "cevap": "MÜDDET" },
   { "harf_sayisi": 7, "soru": "Bir konuyu aydınlatmak için yapılan konuşma", "cevap": "SÖYLEŞİ" },
   { "harf_sayisi": 7, "soru": "Bir yerden bir yere mal taşıma", "cevap": "NAKLİYE" },
   { "harf_sayisi": 7, "soru": "Birine bir işi yapması için yetki verme", "cevap": "VEKALET" },
-  { "harf_sayisi": 7, "soru": "Birine verilen armağan", "cevap": "HEDİYE" },
   { "harf_sayisi": 7, "soru": "Sınav", "cevap": "İMTİHAN" },
   { "harf_sayisi": 7, "soru": "Para alan görevli", "cevap": "KASİYER" },
-  { "harf_sayisi": 7, "soru": "Oturmak için kullanılan, genellikle tek kişilik mobilya", "cevap": "KOLTUK" },
   { "harf_sayisi": 7, "soru": "Devleti yöneten organ", "cevap": "YÖNETİM" },
-
-
-
+  { "harf_sayisi": 7, "soru": "Yıldızlar ve gezegenler sistemi", "cevap": "GALAKSİ" }, 
+  { "harf_sayisi": 7, "soru": "Hayvanları inceleyen bilim dalı", "cevap": "ZOOLOJİ" }, 
+  { "harf_sayisi": 7, "soru": "Yol gösteren kitapçık", "cevap": "KILAVUZ" }, 
   { "harf_sayisi": 8, "soru": "Kakaolu bir tatlı", "cevap": "ÇİKOLATA" },
   { "harf_sayisi": 8, "soru": "Pedallı ulaşım aracı", "cevap": "BİSİKLET" },
   { "harf_sayisi": 8, "soru": "Yazı ve şiir sanatı", "cevap": "EDEBİYAT" },
   { "harf_sayisi": 8, "soru": "Işıkla resim çizme sanatı", "cevap": "FOTOĞRAF" },
-  { "harf_sayisi": 8, "soru": "Yıldızlar ve gezegenler sistemi", "cevap": "GALAKSİLER" }, // Düzeltildi: GALAKSİ 7 harfliydi
-  { "harf_sayisi": 8, "soru": "Coşku, telaş", "cevap": "TELAŞLANMA" }, // Düzeltildi: HEYECAN 7 harfliydi
   { "harf_sayisi": 8, "soru": "Haberleşme, bildirişim", "cevap": "İLETİŞİM" },
   { "harf_sayisi": 8, "soru": "Kırsal kesimde güvenliği sağlayan kolluk kuvveti", "cevap": "JANDARMA" },
   { "harf_sayisi": 8, "soru": "Bir kişinin kendine özgü yapısı, kişiliği", "cevap": "KARAKTER" },
-  { "harf_sayisi": 8, "soru": "Turunçgil bir meyve", "cevap": "MANDALİNA" },
   { "harf_sayisi": 8, "soru": "Yolcu taşıyan büyük tekerlekli araç", "cevap": "OTOMOBİL" },
   { "harf_sayisi": 8, "soru": "Yazının bir bölümü", "cevap": "PARAGRAF" },
-  { "harf_sayisi": 8, "soru": "Yol gösterme, danışmanlık", "cevap": "REHBERLİK" },
-  { "harf_sayisi": 8, "soru": "Devlet yönetme bilimi", "cevap": "POLİTİKA" }, // Düzeltildi: SİYASET 7 harfliydi
+  { "harf_sayisi": 9, "soru": "Yol gösterme, danışmanlık", "cevap": "REHBERLİK" },
+  { "harf_sayisi": 8, "soru": "Devlet yönetme bilimi", "cevap": "POLİTİKA" },
   { "harf_sayisi": 8, "soru": "Bir yarışmada birinci olan kişi veya takım", "cevap": "ŞAMPİYON" },
   { "harf_sayisi": 8, "soru": "Bir dilden başka bir dile çeviri yapan kişi", "cevap": "TERCÜMAN" },
   { "harf_sayisi": 8, "soru": "Bir filmi veya tiyatro oyununu yöneten kişi", "cevap": "YÖNETMEN" },
-  { "harf_sayisi": 8, "soru": "Hayvanları inceleyen bilim dalı", "cevap": "HAYVANBİLİM" }, // Düzeltildi: ZOOLOJİ 7 harfliydi
-  { "harf_sayisi": 8, "soru": "Yol gösteren kitapçık", "cevap": "REHBERKİTAP" }, // Düzeltildi: KILAVUZ 7 harfliydi
-  { "harf_sayisi": 8, "soru": "Bir işin yapılması için gerekli olan araç ve gereçlerin tümü", "cevap": "MALZEME" },
-  { "harf_sayisi": 8, "soru": "Bir ülkenin başka bir ülkede bulunan temsilciliği", "cevap": "BÜYÜKELÇİ" }, // Düzeltildi: ELÇİLİK 7 harfliydi
-  { "harf_sayisi": 8, "soru": "Bir topluluğun ortaklaşa sahip olduğu değerlerin tümü", "cevap": "TÖRENLER" }, // Düzeltildi: GELENEK 7 harfliydi
+  { "harf_sayisi": 7, "soru": "Bir işin yapılması için gerekli olan araç ve gereçlerin tümü", "cevap": "MALZEME" },
+  { "harf_sayisi": 9, "soru": "Bir ülkenin başka bir ülkede bulunan temsilciliği", "cevap": "BÜYÜKELÇİ" }, 
+  { "harf_sayisi": 4, "soru": "Bir topluluğun ortaklaşa sahip olduğu değerlerin tümü", "cevap": "TÖRE" }, 
   { "harf_sayisi": 8, "soru": "Bir şeyin daha iyi duruma getirilmesi", "cevap": "İLERLEME" },
-  { "harf_sayisi": 8, "soru": "Bir şeyin nasıl çalıştığını gösteren düzenek", "cevap": "MEKANİZMA" },
+  { "harf_sayisi": 9, "soru": "Bir şeyin nasıl çalıştığını gösteren düzenek", "cevap": "MEKANİZMA" },
   { "harf_sayisi": 8, "soru": "Genel ağ", "cevap": "İNTERNET" },
-  { "harf_sayisi": 8, "soru": "Yetenek", "cevap": "KABİLİYET" },
+  { "harf_sayisi": 9, "soru": "Yetenek", "cevap": "KABİLİYET" },
   { "harf_sayisi": 8, "soru": "Karmaşık yollar", "cevap": "LABİRENT" },
   { "harf_sayisi": 8, "soru": "Tren sürücüsü", "cevap": "MAKİNİST" },
   { "harf_sayisi": 8, "soru": "Resmi belgeleri onaylayan görevli", "cevap": "NOTERLİK" },
-  { "harf_sayisi": 8, "soru": "Bir ağaç türü", "cevap": "OKALİPTÜS" },
-
+  { "harf_sayisi": 9, "soru": "Bir ağaç türü", "cevap": "OKALİPTÜS" },
+  { "harf_sayisi": 9, "soru": "Turunçgil bir meyve", "cevap": "MANDALİNA" },
   { "harf_sayisi": 9, "soru": "Elektrik üreten büyük makine", "cevap": "JENERATÖR" },
   { "harf_sayisi": 9, "soru": "Tren vagonlarını çeken araç", "cevap": "LOKOMOTİF" },
   { "harf_sayisi": 9, "soru": "Çok küçük nesneleri büyüten alet", "cevap": "MİKROSKOP" },
-  { "harf_sayisi": 9, "soru": "Üniversitede en yüksek rütbeli öğretim üyesi", "cevap": "PROFESÖR" },
-  { "harf_sayisi": 9, "soru": "Yönetici yardımcısı, yazman", "cevap": "SEKRETER" },
-  { "harf_sayisi": 9, "soru": "Düşünce yoluyla iletişim kurma", "cevap": "TELEPATİ" },
+  { "harf_sayisi": 8, "soru": "Üniversitede en yüksek rütbeli öğretim üyesi", "cevap": "PROFESÖR" },
+  { "harf_sayisi": 8, "soru": "Yönetici yardımcısı, yazman", "cevap": "SEKRETER" },
+  { "harf_sayisi": 8, "soru": "Düşünce yoluyla iletişim kurma", "cevap": "TELEPATİ" },
   { "harf_sayisi": 9, "soru": "Harflerin sırasıyla ilgili", "cevap": "ALFABETİK" },
-  { "harf_sayisi": 9, "soru": "Bir ülkenin yönetim merkezi olan şehir", "cevap": "ANAKENT" }, // Düzeltildi: BAŞKENT 7 harfliydi
+  { "harf_sayisi": 7, "soru": "Bir ülkenin yönetim merkezi olan şehir", "cevap": "BAŞKENT" }, 
   { "harf_sayisi": 9, "soru": "Denizin altında giden gemi", "cevap": "DENİZALTI" },
   { "harf_sayisi": 9, "soru": "Vücudun içini görüntüleme yöntemi", "cevap": "ENDOSKOPİ" },
   { "harf_sayisi": 9, "soru": "Senfoni orkestrası", "cevap": "FİLARMONİ" },
-  { "harf_sayisi": 9, "soru": "Haber toplayan ve yayan kişi", "cevap": "GAZETECİ" },
+  { "harf_sayisi": 8, "soru": "Haber toplayan ve yayan kişi", "cevap": "GAZETECİ" },
   { "harf_sayisi": 9, "soru": "Dik üçgende en uzun kenar", "cevap": "HİPOTENÜS" },
-  { "harf_sayisi": 9, "soru": "Oyun kağıdı", "cevap": "İSKAMBİL" },
-  { "harf_sayisi": 9, "soru": "Sınıflandırma, bölüm", "cevap": "KATEGORİ" },
-  { "harf_sayisi": 9, "soru": "Bina tasarlama sanatı", "cevap": "MİMARLIK" },
+  { "harf_sayisi": 8, "soru": "Oyun kağıdı", "cevap": "İSKAMBİL" },
+  { "harf_sayisi": 8, "soru": "Sınıflandırma, bölüm", "cevap": "KATEGORİ" },
+  { "harf_sayisi": 8, "soru": "Bina tasarlama sanatı", "cevap": "MİMARLIK" },
   { "harf_sayisi": 9, "soru": "Uygulamalı bilim", "cevap": "TEKNOLOJİ" },
-  { "harf_sayisi": 9, "soru": "Kuralları belirleyen yazılı belge", "cevap": "YÖNETMELİK" },
+  { "harf_sayisi": 10, "soru": "Kuralları belirleyen yazılı belge", "cevap": "YÖNETMELİK" },
   { "harf_sayisi": 9, "soru": "Bir yeri görmeye giden kişi", "cevap": "ZİYARETÇİ" },
   { "harf_sayisi": 9, "soru": "Bir şeyin doğruluğunu kanıtlayan belge", "cevap": "SERTİFİKA" },
-  { "harf_sayisi": 9, "soru": "Suçluyu bulmaya çalışan görevli", "cevap": "DEDEKTİF" },
+  { "harf_sayisi": 8, "soru": "Suçluyu bulmaya çalışan görevli", "cevap": "DEDEKTİF" },
   { "harf_sayisi": 9, "soru": "Birlikte çalışma", "cevap": "İŞBİRLİĞİ" },
-  { "harf_sayisi": 9, "soru": "Sporcu çalıştırıcısı", "cevap": "ANTRENÖR" },
-  { "harf_sayisi": 9, "soru": "Bilgilendirici film", "cevap": "BELGESEL" },
-  { "harf_sayisi": 9, "soru": "Tercüman", "cevap": "MÜTERCİM" }, // Düzeltildi: ÇEVİRMEN 8 harfliydi
-  { "harf_sayisi": 9, "soru": "Solunum kası", "cevap": "DİYAFRAM" },
-  { "harf_sayisi": 9, "soru": "Üretim, dağıtım ve tüketim bilimi", "cevap": "İKTİSAT" }, // Düzeltildi: EKONOMİ 7 harfliydi
+  { "harf_sayisi": 8, "soru": "Sporcu çalıştırıcısı", "cevap": "ANTRENÖR" },
+  { "harf_sayisi": 8, "soru": "Bilgilendirici film", "cevap": "BELGESEL" },
+  { "harf_sayisi": 8, "soru": "Tercüman", "cevap": "MÜTERCİM" }, // Düzeltildi: ÇEVİRMEN 8 harfliydi
+  { "harf_sayisi": 8, "soru": "Solunum kası", "cevap": "DİYAFRAM" },
+  { "harf_sayisi": 7, "soru": "Üretim, dağıtım ve tüketim bilimi", "cevap": "İKTİSAT" }, // Düzeltildi: EKONOMİ 7 harfliydi
   { "harf_sayisi": 9, "soru": "Canlıların işlevlerini inceleyen bilim", "cevap": "FİZYOLOJİ" },
-  { "harf_sayisi": 9, "soru": "Güvence", "cevap": "TEMİNAT" },
+  { "harf_sayisi": 7, "soru": "Güvence", "cevap": "TEMİNAT" },
   { "harf_sayisi": 9, "soru": "Kitapların bulunduğu yer", "cevap": "KÜTÜPHANE" },
-  
-
   { "harf_sayisi": 10, "soru": "Veri işleyen elektronik cihaz", "cevap": "BİLGİSAYAR" },
   { "harf_sayisi": 10, "soru": "Görüntü ve ses yayını yapan kutu", "cevap": "TELEVİZYON" },
   { "harf_sayisi": 10, "soru": "Pervaneli hava taşıtı", "cevap": "HELİKOPTER" },
   { "harf_sayisi": 10, "soru": "Bitkilerin güneş enerjisiyle besin üretmesi", "cevap": "FOTOSENTEZ" },
-  { "harf_sayisi": 10, "soru": "Alçıdan yapılan tavan süslemesi", "cevap": "KARTONPİYER" },
-  { "harf_sayisi": 10, "soru": "Bilgileri alfabetik sırayla veren kitap", "cevap": "ANSİKLOPEDİ" },
-  { "harf_sayisi": 10, "soru": "Halkın kendi kendini yönetmesi", "cevap": "CUMHURİYET" }, // Düzeltildi: DEMOKRASİ 9 harfliydi
+  { "harf_sayisi": 10, "soru": "Halkın kendi kendini yönetmesi", "cevap": "CUMHURİYET" }, 
   { "harf_sayisi": 10, "soru": "Yemek kültürü ve sanatı", "cevap": "GASTRONOMİ" },
-  { "harf_sayisi": 10, "soru": "Yer altı sıcak su kaynakları", "cevap": "SICAKKAYNAK" }, // Düzeltildi: JEOTERMAL 9 harfliydi
-  { "harf_sayisi": 10, "soru": "Kendi kendine yemek alınan lokanta", "cevap": "KAFETERYA" },
+  { "harf_sayisi": 9, "soru": "Yer altı sıcak su kaynakları", "cevap": "JEOTERMAL" }, 
+  { "harf_sayisi": 9, "soru": "Kendi kendine yemek alınan lokanta", "cevap": "KAFETERYA" },
   { "harf_sayisi": 10, "soru": "Dans adımlarını tasarlayan sanat", "cevap": "KOREOGRAFİ" },
-  { "harf_sayisi": 10, "soru": "Sayılarla ilgilenen bilim dalı", "cevap": "HESAPBİLİM" }, // Düzeltildi: MATEMATİK 9 harfliydi
-  { "harf_sayisi": 10, "soru": "Sinir sistemi hastalıklarıyla ilgilenen tıp dalı", "cevap": "SİNİRBİLİM" }, // Düzeltildi: NÖROLOJİ 8 harfliydi
-  { "harf_sayisi": 10, "soru": "Ameliyat yapan kişi", "cevap": "CERRAH" }, // Düzeltildi: OPERATÖR 8 harfliydi
+  { "harf_sayisi": 9, "soru": "Sayılarla ilgilenen bilim dalı", "cevap": "MATEMATİK" }, 
+  { "harf_sayisi": 10, "soru": "Sinir sistemi hastalıklarıyla ilgilenen tıp dalı", "cevap": "SİNİRBİLİM" }, 
+  { "harf_sayisi": 6, "soru": "Ameliyat yapan kişi", "cevap": "CERRAH" }, 
   { "harf_sayisi": 10, "soru": "Milletvekillerinin toplandığı meclis", "cevap": "PARLAMENTO" },
-  { "harf_sayisi": 10, "soru": "Bir yer ayırtma işlemi", "cevap": "REZERVASYON" },
-  { "harf_sayisi": 10, "soru": "Kalp ve akciğer seslerini dinleme aleti", "cevap": "STETOSKOP" },
+  { "harf_sayisi": 7, "soru": "Bir yer ayırtma işlemi", "cevap": "REZERVE" },
+  { "harf_sayisi": 9, "soru": "Kalp ve akciğer seslerini dinleme aleti", "cevap": "STETESKOP" },
   { "harf_sayisi": 10, "soru": "Vücut sıcaklığını ölçen alet", "cevap": "TERMOMETRE" },
   { "harf_sayisi": 10, "soru": "Yükseköğrenim kurumu", "cevap": "ÜNİVERSİTE" },
-  { "harf_sayisi": 10, "soru": "Bir yarışmaya katılan kişi", "cevap": "KATILIMCI" }, // Düzeltildi: YARIŞMACI 9 harfliydi
-  { "harf_sayisi": 10, "soru": "El ustalığı gerektiren işleri yapan kişi", "cevap": "ZANAATKAR" },
+  { "harf_sayisi": 9, "soru": "Bir yarışmaya katılan kişi", "cevap": "YARIŞMACI" }, 
+  { "harf_sayisi": 9, "soru": "El ustalığı gerektiren işleri yapan kişi", "cevap": "ZANAATKAR" },
   { "harf_sayisi": 10, "soru": "Bir ilacın kullanım kılavuzu", "cevap": "PROSPEKTÜS" },
   { "harf_sayisi": 10, "soru": "Şirket içi hiyerarşi şeması", "cevap": "ORGANİGRAM" },
   { "harf_sayisi": 10, "soru": "Veri bilimi", "cevap": "İSTATİSTİK" },
-  { "harf_sayisi": 10, "soru": "Isıtma sistemi", "cevap": "KALORİFER" },
+  { "harf_sayisi": 9, "soru": "Isıtma sistemi", "cevap": "KALORİFER" },
   { "harf_sayisi": 10, "soru": "Motor parçası", "cevap": "KARBÜRATÖR" },
   { "harf_sayisi": 10, "soru": "Müzik besteleyen sanatçı", "cevap": "KOMPOZİTÖR" },
-  { "harf_sayisi": 10, "soru": "Yazışmaları yürüten görevli", "cevap": "YAZIŞMACI" },
+  { "harf_sayisi": 9, "soru": "Yazışmaları yürüten görevli", "cevap": "YAZIŞMACI" },
   { "harf_sayisi": 10, "soru": "Aracın yönünü belirleyen düzenek", "cevap": "DİREKSİYON" },
-  
   { "harf_sayisi": 10, "soru": "Deney yapılan yer", "cevap": "LABORATUAR" }
 ];
