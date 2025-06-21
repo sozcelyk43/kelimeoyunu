@@ -31,14 +31,44 @@ header h1 {    font-weight: 900;    font-size: 2.5rem;    color: var(--text-yell
 
 .stat-box .value {    font-size: 2rem;    font-weight: 700;    display: block;}
 
-.letter-container {    display: flex;    justify-content: center;     gap: 15px;    margin-bottom: 30px;    min-height: 80px;    flex-wrap: nowrap;
-    overflow-x: auto;    padding-bottom: 15px;}
+.letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Konteynırın tam genişliği kullanmasını sağla */
+    gap: 1vw; /* Kutular arası boşluk da ekranla orantılı olsun */
+    margin-bottom: 30px;
+    min-height: 80px;
+}
 
-.hexagon {    position: relative;    flex-grow: 0;            flex-shrink: 1;         flex-basis: 70px;        max-width: 70px;          
-    height: 80.83px;     background-color: #fff;    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;    justify-content: center;    align-items: center;    transition: transform 0.2s ease;}
+.hexagon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 8vw;
+    max-width: 65px; 
+    
+    /* Yüksekliği, genişliğe göre orantılı ayarla (altıgen şeklini korumak için) */
+    height: 9.2vw;
+    max-height: 75px;
+    
+    background-color: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.2s ease;
+}
 
-.hexagon .letter {    font-size: 2.5rem;    font-weight: 900;    color: var(--primary-bg);}
+
+.hexagon .letter {
+    /* Yazı tipi boyutunu da ekranla orantılı yap, ama en fazla 2.2rem olsun */
+    font-size: 3.5vw;
+    max-font-size: 2.2rem;
+
+    font-weight: 900;
+    color: var(--primary-bg);
+}
+
 
 .question-bar {    background-color: var(--accent-purple);    padding: 15px;    border-radius: 10px;    margin-bottom: 20px;    min-height: 60px;
     display: flex;    justify-content: center;    align-items: center;}
@@ -99,8 +129,11 @@ button:disabled {    cursor: not-allowed;    opacity: 0.4; }
 
 footer {  position: fixed;    bottom: 0;    left: 0;    width: 100%;    padding: 15px 0;    text-align: center;    color: rgba(255, 255, 255, 0.5);  
         font-size: 0.9rem;    z-index: 5;}
-@media (max-width: 480px) {    .letter-container {        gap: 5px;        padding-bottom: 10px;    }    .hexagon {       width: 45px;        height: 52px;
-        flex-shrink: 0;    }    .hexagon .letter {        font-size: 1.5rem;    }    .controls {        gap: 10px;     }
+
+
+
+@media (max-width: 480px) {    .letter-container {        gap: 5px;        padding-bottom: 10px;    }    
+     .controls {        gap: 10px;     }
 
 #show-question-btn, #start-answer-btn, #get-letter-btn {        width: 75px;        height: 75px;        font-size: 0.8rem;        line-height: 1.1;    }
 
