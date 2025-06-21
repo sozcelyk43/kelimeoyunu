@@ -144,3 +144,5 @@ footer {  position: fixed;    bottom: 0;    left: 0;    width: 100%;    padding:
     header h1 {        font-size: 2rem;    }
 
     .stat-box .value {        font-size: 1.5rem;    }}
+.feedback-popup.orange {
+    background-color: #f39c12;
