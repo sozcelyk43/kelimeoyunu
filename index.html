@@ -52,13 +52,17 @@
     <div id="hint-popup" class="feedback-popup orange"></div>
 
     <div id="game-over-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modal-title">Oyun Bitti!</h2>
+            <p id="modal-text">Tebrikler, oyunu tamamladınız!</p>
+            <p>Toplam Puanınız: <span id="final-score">0</span></p>
+            <button id="restart-btn">Yeniden Başla</button>
         </div>
-
+    </div>
 
     <script src="sorular.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ... (DOM Elementleri ve Oyun Değişkenleri aynı kalacak) ...
             const scoreDisplay = document.getElementById('score-display');
             const mainTimerDisplay = document.getElementById('main-timer-display');
             const letterContainer = document.getElementById('letter-container');
@@ -70,16 +74,15 @@
             const getLetterBtn = document.getElementById('get-letter-btn');
             const answerTimerDisplay = document.getElementById('answer-timer-display');
             const correctPopup = document.getElementById('correct-popup');
-            const hintPopup = document.getElementById('hint-popup'); // Yeni pop-up elementi
+            const hintPopup = document.getElementById('hint-popup');
             const gameOverModal = document.getElementById('game-over-modal');
+            const modalText = document.getElementById('modal-text');
             const finalScore = document.getElementById('final-score');
             const restartBtn = document.getElementById('restart-btn');
             
             let score, mainTime, answerTime = 20, mainTimer, answerTimer, mainTimerActive;
             let currentLevel, questionsForLevel, questionIndex, currentWord, revealedLetters;
 
-
-            // *** YENİ: İki kelime arasındaki harf farkını hesaplayan fonksiyon ***
             function levenshtein(a, b) {
                 if (a.length === 0) return b.length;
                 if (b.length === 0) return a.length;
@@ -103,24 +106,86 @@
                 return matrix[b.length][a.length];
             }
 
+            function startGame() {
+                score = 300;
+                mainTime = 300;
+                currentLevel = 3;
+                questionIndex = 0;
+                mainTimerActive = false; 
+                clearInterval(mainTimer); 
+                clearInterval(answerTimer);
+                mainTimerDisplay.textContent = '05:00'; 
+                updateScoreDisplay();
+                gameOverModal.style.display = 'none';
+                loadLevelQuestions();
+            }
+
+            function loadLevelQuestions() {
+                if (currentLevel > 10) {
+                    endGame("Tebrikler, tüm soruları tamamladınız!");
+                    return;
+                }
+                const levelQuestions = soruBankasi.filter(q => q.harf_sayisi === currentLevel);
+                for (let i = levelQuestions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [levelQuestions[i], levelQuestions[j]] = [levelQuestions[j], levelQuestions[i]];
+                }
+                questionsForLevel = levelQuestions.slice(0, 3);
+                questionIndex = 0;
+                loadQuestion();
+            }
+
+            function loadQuestion() {
+                if (questionIndex >= questionsForLevel.length) {
+                    currentLevel++;
+                    loadLevelQuestions();
+                    return;
+                }
+                const questionData = questionsForLevel[questionIndex];
+                currentWord = questionData.cevap.toLocaleUpperCase('tr-TR');
+                revealedLetters = [];
+                letterContainer.innerHTML = '';
+                for (let i = 0; i < currentWord.length; i++) {
+                    const letterBox = document.createElement('div');
+                    letterBox.className = 'hexagon';
+                    const letterSpan = document.createElement('span');
+                    letterSpan.className = 'letter';
+                    letterBox.appendChild(letterSpan);
+                    letterContainer.appendChild(letterBox);
+                }
+                if (!mainTimerActive) {
+                    questionDisplay.textContent = `Oyuna başlamak için "Soruyu Gör" butonuna basın.`;
+                } else {
+                    questionDisplay.textContent = `Sıradaki soru ${currentWord.length} harfli. Hazır olduğunda butona bas.`;
+                }
+                resetControls();
+            }
+
+            function showQuestion() {
+                startMainTimer();
+                if (!mainTimerActive) {
+                    mainTimerActive = true;
+                }
+                questionDisplay.textContent = questionsForLevel[questionIndex].soru;
+                showQuestionBtn.disabled = true;
+                startAnswerBtn.disabled = false;
+                getLetterBtn.disabled = false;
+            }
 
             function startAnswerPhase() {
                 clearInterval(mainTimer);
                 startAnswerBtn.disabled = true;
-                getLetterBtn.disabled = true; // "Durdur" basınca harf almayı da pasif yap
+                getLetterBtn.disabled = true;
                 answerInput.disabled = false;
                 checkAnswerBtn.disabled = false;
                 answerInput.focus();
-                
                 answerTime = 20;
-                resumeAnswerTimer(); // Sayacı başlatan yeni yardımcı fonksiyon
+                resumeAnswerTimer();
             }
-
-            // *** YENİ: Sayacı başlatan veya devam ettiren yardımcı fonksiyon ***
+            
             function resumeAnswerTimer() {
                 answerTimerDisplay.textContent = answerTime;
                 answerTimerDisplay.style.display = 'flex';
-
                 answerTimer = setInterval(() => {
                     answerTime--;
                     answerTimerDisplay.textContent = answerTime;
@@ -132,13 +197,10 @@
             }
 
             function checkAnswer() {
-                // *** DEĞİŞİKLİK: .trim() ile baştaki ve sondaki boşluklar temizleniyor ***
                 const userAnswer = answerInput.value.trim().toLocaleUpperCase('tr-TR');
-                
-                if (!userAnswer) return; // Boş cevabı kontrol etme
+                if (!userAnswer) return;
 
                 if (userAnswer === currentWord) {
-                    // --- Doğru cevap mantığı (Aynı kaldı) ---
                     clearInterval(answerTimer);
                     let questionScore = currentWord.length * 100;
                     let penalty = revealedLetters.length * 100;
@@ -151,55 +213,110 @@
                         questionIndex++;
                         loadQuestion();
                     }, 3000);
-
                 } else {
-                    // --- Yanlış cevap mantığı (Tamamen yenilendi) ---
                     const distance = levenshtein(userAnswer, currentWord);
-                    
                     if ((userAnswer.length === currentWord.length) && (distance === 1 || distance === 2)) {
-                        // YAKLAŞTIN DURUMU
-                        clearInterval(answerTimer); // Zamanı durdur
-                        
+                        clearInterval(answerTimer);
                         hintPopup.textContent = `Yaklaştın, ${distance} harfi düzelt!`;
                         hintPopup.classList.add('show');
-
                         setTimeout(() => {
                             hintPopup.classList.remove('show');
-                            if(mainTime > 0) resumeAnswerTimer(); // Sayacı kaldığı yerden devam ettir
-                        }, 2000); // 2 saniye bekle
-
+                            if (mainTime > 0) resumeAnswerTimer();
+                        }, 2000);
                     } else {
-                        // TAMAMEN YANLIŞ DURUMU
                         answerInput.classList.add('incorrect');
                         setTimeout(() => {
                             answerInput.classList.remove('incorrect');
                         }, 500);
                     }
-                    answerInput.value = ''; // Her yanlışta kutuyu temizle
+                    answerInput.value = '';
                 }
             }
 
-            // --- Diğer tüm fonksiyonlar (startGame, loadQuestion, showQuestion vb.) aynı kalabilir ---
-            // Sadece yukarıdaki startAnswerPhase ve checkAnswer fonksiyonlarını güncellemeniz yeterlidir.
-            // (Aşağıda tam halleri tekrar verilmiştir)
+            function timeUp() {
+                revealWord(false);
+                setTimeout(() => {
+                    questionIndex++;
+                    loadQuestion();
+                }, 2000);
+            }
             
-            function startGame() { score = 300; mainTime = 300; currentLevel = 3; questionIndex = 0; mainTimerActive = false; clearInterval(mainTimer); clearInterval(answerTimer); mainTimerDisplay.textContent = '05:00'; updateScoreDisplay(); gameOverModal.style.display = 'none'; loadLevelQuestions(); }
-            function loadLevelQuestions() { if (currentLevel > 10) { endGame("Tebrikler, tüm soruları tamamladınız!"); return; } const levelQuestions = soruBankasi.filter(q => q.harf_sayisi === currentLevel); for (let i = levelQuestions.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[levelQuestions[i], levelQuestions[j]] = [levelQuestions[j], levelQuestions[i]]; } questionsForLevel = levelQuestions.slice(0, 3); questionIndex = 0; loadQuestion(); }
-            function loadQuestion() { if (questionIndex >= questionsForLevel.length) { currentLevel++; loadLevelQuestions(); return; } const questionData = questionsForLevel[questionIndex]; currentWord = questionData.cevap.toLocaleUpperCase('tr-TR'); revealedLetters = []; letterContainer.innerHTML = ''; for (let i = 0; i < currentWord.length; i++) { const letterBox = document.createElement('div'); letterBox.className = 'hexagon'; const letterSpan = document.createElement('span'); letterSpan.className = 'letter'; letterBox.appendChild(letterSpan); letterContainer.appendChild(letterBox); } if (!mainTimerActive) { questionDisplay.textContent = `Oyuna başlamak için "Soruyu Gör" butonuna basın.`; } else { questionDisplay.textContent = `Sıradaki soru ${currentWord.length} harfli. Hazır olduğunda butona bas.`; } resetControls(); }
-            function showQuestion() { startMainTimer(); if (!mainTimerActive) { mainTimerActive = true; } questionDisplay.textContent = questionsForLevel[questionIndex].soru; showQuestionBtn.disabled = true; startAnswerBtn.disabled = false; getLetterBtn.disabled = false; }
-            function timeUp() { revealWord(false); setTimeout(() => { questionIndex++; loadQuestion(); }, 2000); }
-            function getHint() { if(score < 100) { return; } const unrevealedIndices = []; for (let i = 0; i < currentWord.length; i++) { if (!revealedLetters.includes(i)) { unrevealedIndices.push(i); } } if (unrevealedIndices.length > 1) { score -= 100; updateScoreDisplay(); const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)]; revealedLetters.push(randomIndex); letterContainer.children[randomIndex].querySelector('.letter').textContent = currentWord[randomIndex]; } }
-            function revealWord(isCorrect) { for (let i = 0; i < currentWord.length; i++) { letterContainer.children[i].querySelector('.letter').textContent = currentWord[i]; } resetControlsForNext(); }
-            function updateScoreDisplay() { scoreDisplay.textContent = score; }
-            function startMainTimer() { clearInterval(mainTimer); mainTimer = setInterval(() => { mainTime--; const minutes = Math.floor(mainTime / 60); const seconds = mainTime % 60; mainTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; if (mainTime <= 0) { endGame("Süreniz bitti!"); } }, 1000); }
-            function resetControls() { showQuestionBtn.disabled = false; startAnswerBtn.disabled = true; getLetterBtn.disabled = true; answerInput.disabled = true; checkAnswerBtn.disabled = true; answerInput.value = ''; answerTimerDisplay.style.display = 'none'; }
-            function resetControlsForNext() { showQuestionBtn.disabled = true; startAnswerBtn.disabled = true; getLetterBtn.disabled = true; answerInput.disabled = true; checkAnswerBtn.disabled = true; answerInput.value = ''; answerTimerDisplay.style.display = 'none'; }
-            function endGame(message) { clearInterval(mainTimer); clearInterval(answerTimer); mainTimerActive = false; document.getElementById('modal-text').textContent = message; finalScore.textContent = score; gameOverModal.style.display = 'flex'; }
+            function getHint() {
+                if(score < 100) { return; }
+                const unrevealedIndices = [];
+                for (let i = 0; i < currentWord.length; i++) {
+                    if (!revealedLetters.includes(i)) {
+                        unrevealedIndices.push(i);
+                    }
+                }
+                if (unrevealedIndices.length > 1) { 
+                    score -= 100;
+                    updateScoreDisplay();
+                    const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
+                    revealedLetters.push(randomIndex);
+                    letterContainer.children[randomIndex].querySelector('.letter').textContent = currentWord[randomIndex];
+                }
+            }
+
+            function revealWord(isCorrect) {
+                for (let i = 0; i < currentWord.length; i++) {
+                    letterContainer.children[i].querySelector('.letter').textContent = currentWord[i];
+                }
+                resetControlsForNext();
+            }
             
+            function updateScoreDisplay() {
+                scoreDisplay.textContent = score;
+            }
+
+            function startMainTimer() {
+                clearInterval(mainTimer); 
+                mainTimer = setInterval(() => {
+                    mainTime--;
+                    const minutes = Math.floor(mainTime / 60);
+                    const seconds = mainTime % 60;
+                    mainTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    if (mainTime <= 0) {
+                        endGame("Süreniz bitti!");
+                    }
+                }, 1000);
+            }
+            
+            function resetControls() {
+                showQuestionBtn.disabled = false;
+                startAnswerBtn.disabled = true;
+                getLetterBtn.disabled = true;
+                answerInput.disabled = true;
+                checkAnswerBtn.disabled = true;
+                answerInput.value = '';
+                answerTimerDisplay.style.display = 'none';
+            }
+            
+            function resetControlsForNext() {
+                showQuestionBtn.disabled = true;
+                startAnswerBtn.disabled = true;
+                getLetterBtn.disabled = true;
+                answerInput.disabled = true;
+                checkAnswerBtn.disabled = true;
+                answerInput.value = '';
+                answerTimerDisplay.style.display = 'none';
+            }
+
+            function endGame(message) {
+                clearInterval(mainTimer);
+                clearInterval(answerTimer);
+                mainTimerActive = false;
+                modalText.textContent = message;
+                finalScore.textContent = score;
+                gameOverModal.style.display = 'flex';
+            }
+
             showQuestionBtn.addEventListener('click', showQuestion);
             startAnswerBtn.addEventListener('click', startAnswerPhase);
             checkAnswerBtn.addEventListener('click', checkAnswer);
-            answerInput.addEventListener('keyup', (e) => { if (e.key === 'Enter' && !checkAnswerBtn.disabled) checkAnswer(); });
+            answerInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter' && !checkAnswerBtn.disabled) checkAnswer();
+            });
             getLetterBtn.addEventListener('click', getHint);
             restartBtn.addEventListener('click', startGame);
 
@@ -213,3 +330,4 @@
     
 </body>
 </html>
+
