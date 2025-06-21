@@ -169,14 +169,13 @@
             function startAnswerPhase() {
                 clearInterval(mainTimer);
                 startAnswerBtn.disabled = true;
+                getLetterBtn.disabled = true;
                 answerInput.disabled = false;
                 checkAnswerBtn.disabled = false;
                 answerInput.focus();
-                
                 answerTime = 20;
                 answerTimerDisplay.textContent = answerTime;
                 answerTimerDisplay.style.display = 'flex';
-
                 answerTimer = setInterval(() => {
                     answerTime--;
                     answerTimerDisplay.textContent = answerTime;
