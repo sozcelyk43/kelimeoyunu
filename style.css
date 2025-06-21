@@ -31,8 +31,8 @@ header h1 {    font-weight: 900;    font-size: 2.5rem;    color: var(--text-yell
 
 .stat-box .value {    font-size: 2rem;    font-weight: 700;    display: block;}
 
-.letter-container {    display: flex;    justify-content: center;     align-items: center;    gap: 15px;    margin-bottom: 30px;
-    min-height: 80px;    flex-wrap: nowrap;    overflow-x: auto;    padding-bottom: 15px;     justify-content: flex-start; }
+.letter-container {    display: flex;    justify-content: center;     gap: 15px;    margin-bottom: 30px;    min-height: 80px;    flex-wrap: nowrap;
+    overflow-x: auto;    padding-bottom: 15px;}
 
 .hexagon {    position: relative;    width: 70px;    height: 80.83px;    background-color: #fff;    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;    justify-content: center;    align-items: center;    transition: transform 0.2s ease;}
